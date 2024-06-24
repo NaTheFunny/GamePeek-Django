@@ -1,18 +1,25 @@
 body {
-    font-family: Arial, sans-serif;
+    background-image: url("../img/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
 
-.card-conteiner{
+body h1{
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-container{
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en la siguiente línea si no hay suficiente espacio */
     gap: 20px;
+    justify-content: center; /* Centra las tarjetas horizontalmente */
     padding: 20px;
 }
 

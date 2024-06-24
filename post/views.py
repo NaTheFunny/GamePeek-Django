@@ -5,3 +5,6 @@ from .models import Post
 def index(request):
     posts = Post.objects.all();
     return render(request,'index.html',{'posts':posts})
+
+def crud_view(request):
+    return render(request, 'crud.html')

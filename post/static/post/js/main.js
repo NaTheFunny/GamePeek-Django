@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded',function(){
     const cardContainer = document.getElementById('card-container');
-
     fetch('/api/post/')
         .then(response => {
             if (!response.ok){

@@ -18,7 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path,include
 from post.api.router import router_posts
-from post.views import index
+from post.views import index , crud_view
 
 
 
@@ -26,4 +26,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include(router_posts.urls)),
     path('', index, name='index'),
+    path('crud/', crud_view, name='crud_view'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
