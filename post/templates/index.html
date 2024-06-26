@@ -49,6 +49,7 @@
                 {% csrf_token %}
                 <button type="submit" class="btn btn-outline-danger">Cerrar sesion</button>
             </form>
+            <button class="btn btn-outline-primary" id="cartButton">Carrito</button>
           {% else %}
             <a href="{% url 'login' %}" class="btn btn-outline-primary">Iniciar sesion</a>
             <a href="{% url 'register' %}" class="btn btn-outline-success">Registrarse</a>
@@ -70,15 +71,26 @@
                 <h2> {{ post.title}}</h2>
                 <h2>${{ post.price}}</h2>
                 <p> {{ post.content}}</p>
-                <img src="{{ post.image.url }}" alt="Post Image">
+                <img src="{{ post.image.url }}" alt="Post Image">                             
                 <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Editar</a>
-                <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Eliminar Juego</a>         
-            </div>         
+                <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Eliminar Juego</a>
+                <button class="btn btn-primary btn-lg add-to-cart" data-id="{{ post.id }}">Agregar al Carrito</button>
+            </div>
+                   
         {% endfor %}
-        
-    </div>  
+    </div>
+
     <a href="{% url 'agregar' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Agregar Juego</a>    
-</main>    
+</main>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+  <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasCartLabel">Carrito de Compras</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+  </div>
+</div>
     <script src="{% static 'js/main.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

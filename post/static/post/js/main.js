@@ -25,6 +25,16 @@ document.addEventListener('DOMContentLoaded',function(){
                 image.src = post.image;
                 image.alt = post.title;
 
+                const carritoButton = document.createElement('button');
+                carritoButton.textContent = 'Agregar al Carrito';
+                carritoButton.classList.add('btn', 'btn-primary');
+                carritoButton.setAttribute('data-id',post.id)
+                carritoButton.addEventListener('click', function() {
+                    alert('Artículo agregado al carrito');
+                    agregarAlCarrito(post.id);
+                    // Aquí puedes agregar lógica para añadir al carrito
+                });
+
                 const editarButton = document.createElement('a');
                 editarButton.href = `/editar/${post.id}/`;
                 editarButton.classList.add('btn','btn-primary','btn-lg','active');
@@ -42,9 +52,12 @@ document.addEventListener('DOMContentLoaded',function(){
                 card.appendChild(title);
                 card.appendChild(price);
                 card.appendChild(content);
-                card.appendChild(image);
+                card.appendChild(image);           
                 card.appendChild(editarButton);
                 card.appendChild(deleteButton);
+                if (user.is_authenticated) {
+                    card.appendChild(carritoButton);
+                }
 
                 cardContainer.appendChild(card);
             });
@@ -53,3 +66,25 @@ document.addEventListener('DOMContentLoaded',function(){
             console.error('Error de Promesa fetch: ', error)
         });
 });
+
+function agregarAlCarrito(postId) {
+    // Lógica para agregar el producto con postId al carrito
+    // Puedes hacer una solicitud POST a tu API de carrito aquí, por ejemplo:
+    fetch(`/api/carrito/agregar/${postId}/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // Incluir cualquier header de autenticación si es necesario
+        },
+        body: JSON.stringify({ postId: postId })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('La solicitud de agregar al carrito no fue exitosa');
+        }
+        alert('Artículo agregado al carrito');
+    })
+    .catch(error => {
+        console.error('Error al agregar al carrito: ', error);
+    });
+}
