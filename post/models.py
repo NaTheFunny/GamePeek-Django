@@ -1,5 +1,6 @@
 from django.db import models
 from pathlib import Path
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 # Create your models here.
 
 def get_image_path(instance,filename):
@@ -10,4 +11,3 @@ class Post(models.Model):
     content = models.TextField()
     image = models.ImageField(blank=True,null=True,upload_to='fotos/')
     price = models.IntegerField(default=0)
-    
