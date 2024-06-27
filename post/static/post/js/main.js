@@ -25,16 +25,6 @@ document.addEventListener('DOMContentLoaded',function(){
                 image.src = post.image;
                 image.alt = post.title;
 
-                const carritoButton = document.createElement('button');
-                carritoButton.textContent = 'Agregar al Carrito';
-                carritoButton.classList.add('btn', 'btn-primary');
-                carritoButton.setAttribute('data-id',post.id)
-                carritoButton.addEventListener('click', function() {
-                    alert('Artículo agregado al carrito');
-                    agregarAlCarrito(post.id);
-                    // Aquí puedes agregar lógica para añadir al carrito
-                });
-
                 const editarButton = document.createElement('a');
                 editarButton.href = `/editar/${post.id}/`;
                 editarButton.classList.add('btn','btn-primary','btn-lg','active');
@@ -49,15 +39,22 @@ document.addEventListener('DOMContentLoaded',function(){
                 deleteButton.ariaPressed = 'true';
                 deleteButton.textContent = 'Eliminar';
 
+                const agregarCarritoButton = document.createElement('button');
+                agregarCarritoButton.dataset.id = post.id;
+                agregarCarritoButton.classList.add('btn', 'btn-success', 'btn-lg', 'active', 'agregar-carrito');
+                agregarCarritoButton.textContent = 'Agregar al Carrito';
+                agregarCarritoButton.addEventListener('click', function() {
+                    agregarAlCarrito(post.id, post.title, post.price);
+                    cartModal.show(); // Mostrar el carrito al agregar un artículo
+                });
+
                 card.appendChild(title);
                 card.appendChild(price);
                 card.appendChild(content);
                 card.appendChild(image);           
                 card.appendChild(editarButton);
                 card.appendChild(deleteButton);
-                if (user.is_authenticated) {
-                    card.appendChild(carritoButton);
-                }
+                card.appendChild(agregarCarritoButton);
 
                 cardContainer.appendChild(card);
             });
@@ -65,26 +62,54 @@ document.addEventListener('DOMContentLoaded',function(){
         .catch(error => {
             console.error('Error de Promesa fetch: ', error)
         });
-});
-
-function agregarAlCarrito(postId) {
-    // Lógica para agregar el producto con postId al carrito
-    // Puedes hacer una solicitud POST a tu API de carrito aquí, por ejemplo:
-    fetch(`/api/carrito/agregar/${postId}/`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            // Incluir cualquier header de autenticación si es necesario
-        },
-        body: JSON.stringify({ postId: postId })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('La solicitud de agregar al carrito no fue exitosa');
+        function agregarAlCarrito(postId, title, price) {
+            // Verificar si ya existe el juego en el carrito
+            const cardContainer = document.getElementById('card-container');
+            const cartModal = new bootstrap.Offcanvas(document.getElementById('cartModal'));
+            const cartItemsList = document.getElementById('cartItemsList');
+            const existingItem = Array.from(cartItemsList.children).find(item => {
+                return item.dataset.postId === postId.toString();
+            });
+    
+            if (existingItem) {
+                // Si ya existe, aumentar la cantidad o hacer algo según tu lógica
+                const quantityElement = existingItem.querySelector('.quantity');
+                let quantity = parseInt(quantityElement.textContent, 10);
+                quantity++;
+                quantityElement.textContent = quantity;
+            } else {
+                // Si no existe, crear un nuevo elemento en el carrito
+                const listItem = document.createElement('li');
+                listItem.classList.add('list-group-item');
+                listItem.dataset.postId = postId;
+    
+                const itemName = document.createElement('span');
+                itemName.textContent = title;
+    
+                const itemPrice = document.createElement('span');
+                itemPrice.textContent = '$' + price;
+    
+                const quantity = document.createElement('span');
+                quantity.textContent = '1';
+                quantity.classList.add('quantity');
+    
+                listItem.appendChild(itemName);
+                listItem.appendChild(itemPrice);
+                listItem.appendChild(quantity);
+    
+                cartItemsList.appendChild(listItem);
+            }
+    
+            // Actualizar el contador de artículos en el carrito (opcional)
+            const toggleCartBtn = document.getElementById('toggleCartBtn');
+            toggleCartBtn.addEventListener('click', function() {
+                cartModal.toggle();
+            });
         }
-        alert('Artículo agregado al carrito');
-    })
-    .catch(error => {
-        console.error('Error al agregar al carrito: ', error);
-    });
-}
+    
+        // Event listener para mostrar/ocultar el carrito modal
+        const toggleCartBtn = document.getElementById('toggleCartBtn');
+        toggleCartBtn.addEventListener('click', function() {
+            cartModal.toggle();
+        });
+});

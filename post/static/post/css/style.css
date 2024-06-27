@@ -5,7 +5,80 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     margin: 0;
-    padding-top: 70px;
+    padding-top: 120px;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+#header{
+    background: black;
+    padding: 15px;
+    margin-left: auto; 
+}
+
+#header .nav-menu {
+    margin-left: auto; 
+}
+
+#header .nav-menu p{
+    font-size: 24px;
+    font-family: fantasy;
+    margin: 0;
+    padding-left: 24px;
+    color: white;
+}
+
+#header .nav-menu form{
+    font-size: large;
+    color: aliceblue;
+    padding-left: auto;
+    padding-top: auto;
+    padding-bottom: auto;
+    display: inline-block;
+    margin-left: 20px; /* Espaciado entre el formulario y otros elementos */
+}
+
+#header .logo{
+    font-size: 28px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#header .logo a{
+    color: white;
+}
+
+.nav-menu ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-menu > ul{
+    display: flex;
+}
+
+.nav-menu > ul > li {
+    position: relative;
+    white-space: nowrap;
+    padding: 10px 0 10px 22px;
+}
+
+.nav-menu a{
+    display: block;
+    position: relative;
+    color: rgba(255, 255, 255, 0.7);
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    padding: 0 4px;
+    text-transform: uppercase;
 }
 
 body h1{
@@ -58,4 +131,29 @@ body a{
     display: flex;
     justify-content: center;
     margin-left: 5%;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.list-group-item img{
+    margin-top: 5px;
+    width: 100px; /* Ancho deseado */
+    height: 100px; /* Altura deseada */
+    object-fit: cover; /* Ajuste la imagen para cubrir el tamaño especificado sin deformarla */
+    border-radius: 5px; /* Opcional: bordes redondeados */
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.list-group-item span{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }

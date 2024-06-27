@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>Carrito de compras</h1>
+{% for item in items_carrito %}
+    <div>
+        <h2>{{ item.post.title }}</h2>
+        <p>Precio: ${{ item.post.price }}</p>
+        <p>Cantidad: {{ item.cantidad }}</p>
+        <p>Subtotal: ${{ item.subtotal }}</p>
+        <a href="{% url 'eliminar_del_carrito' item.id %}">Eliminar</a>
+    </div>
+{% empty %}
+    <p>El carrito está vacío.</p>
+{% endfor %}
+
+<p>Total del carrito: ${{ total_carrito }}</p>
+<a href="{% url 'index' %}">Seguir comprando</a>
+</body>
+</html>

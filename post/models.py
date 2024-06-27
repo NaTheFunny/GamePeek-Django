@@ -12,8 +12,14 @@ class Post(models.Model):
     image = models.ImageField(blank=True,null=True,upload_to='fotos/')
     price = models.IntegerField(default=0)
 
-class CartItem(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Post, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.title  # Representación legible del objeto en el admin y en las consultas
+    
+class Carrito(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    # Puedes añadir otros campos según sea necesario, como total, fecha, etc.
+
+class CarritoItem(models.Model):
+    carrito = models.ForeignKey(Carrito, related_name='items', on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
