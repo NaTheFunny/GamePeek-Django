@@ -13,5 +13,13 @@ class Post(models.Model):
     price = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.title  # Representación legible del objeto en el admin y en las consultas
+        return self.title  
 
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, related_name='items', on_delete=models.CASCADE)
+    product = models.ForeignKey(Post, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)

@@ -36,6 +36,7 @@
   </header>
 <body>
     <div class="wrapper">
+      {% if not user.is_authenticated %}
         <div class="container-register">
             <h2>Register</h2>
             <form method="post">
@@ -44,6 +45,9 @@
                 <button type="submit">Register</button>
             </form>
         </div>
+        {% else %}
+        <h1>¡Ya estás logueado! >:v</h1>
+        {% endif %}
     </div>
 </body>
 </html>

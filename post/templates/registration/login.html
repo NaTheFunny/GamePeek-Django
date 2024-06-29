@@ -35,16 +35,20 @@
     </div>
   </header>
 <body>
-    <div class="container-registration">
-            <div class="login-container">
-                <h2>Login</h2>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Login</button>
-                </form>
-                <p>¿No tienes una cuenta? <a href="{% url 'register' %}">Registrarse</a></p>
-            </div>
-    </div> 
+  <div class="container-registration">
+    {% if not user.is_authenticated %}
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+        <p>¿No tienes una cuenta? <a href="{% url 'register' %}">Registrarse</a></p>
+    </div>
+    {% else %}
+    <h1>¡Ya estás logueado! >:v</h1>
+    {% endif %}
+</div>
 </body>
 </html>

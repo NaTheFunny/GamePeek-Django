@@ -1,3 +1,5 @@
+
+
 body {
     background-image: url("../img/background.jpg");
     background-size: cover;
@@ -5,7 +7,8 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     margin: 0;
-    padding-top: 120px;
+    min-height: 100vh;
+    padding-top: 72px;
 }
 
 a:hover{
@@ -13,7 +16,7 @@ a:hover{
 }
 
 #header{
-    background: rgb(0, 0, 0);
+    background: rgb(21, 15, 64);
     padding: 15px;
     margin-left: auto; 
     display: flex;
@@ -112,56 +115,95 @@ a:hover{
     text-transform: uppercase;
 }
 
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start center;
+    gap: 10px;
+    padding: 20px;
+    padding-top: 50px;
+    margin-left: 55px;
+}
+
+.card {
+    background-color: black; 
+    width: 160px; 
+    max-width: 200px; 
+    height: 340px; 
+    max-height: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 50%; 
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.card-price {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-size: 1em;
+    color: #777;
+    margin-bottom: 15px;
+    flex-grow: 1; 
+}
+
+.card-actions {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+    margin-top: auto;
+}
+
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
 body h1{
     display: flex;
     justify-content: center;
-    color: white;
+    color: rgb(255, 255, 255);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.card-container{
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 20px;
-    justify-content: center; 
-    padding: 20px;
-}
-
-.card{
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    overflow: hidden;
-    width: 300px;
-    margin: 10px;
-}
-
-.card img{
-    width: 100%;
-    height: auto;
-}
-
-.card h2{
-    margin: 16px;
-    font-size: 1.5rem;
-}
-
-.card p{
-    margin: 16px;
-    font-size: 1em;
-    color: #000000;
-}
-
-.card a{
-    display: block;
-    margin: 16px 16px 16px 0; 
-}
-
-body a{
-    display: flex;
-    justify-content: center;
-    margin-left: 5%;
+    padding-bottom: 10px;
 }
 
 .btn-danger {
@@ -190,6 +232,7 @@ body a{
 }
 
 .container-registration{
+    padding-top: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -304,4 +347,100 @@ body a{
 }
 .container-register p a:hover {
     text-decoration: underline;
+}
+
+.container-carrito{
+    padding-top: 12vh;
+    color: white;
+    text-decoration: none;
+}
+
+#conteItemsCarrusel {
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+.itemCarrusel {
+    height: 500px;
+    position: absolute;
+    width: 100%;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.itemCarrusel.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.tarjetaCarrusel {
+    height: 100%;
+}
+
+#tarjetaCarrusel-1 {
+    background: url('../img/carrusel.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%; 
+    height: 100vh;
+}
+
+#tarjetaCarrusel-2 {
+    background: url('../img/carrusel2.jpg');
+    background-position: center center;
+    background-size:auto;
+    background-attachment: fixed;
+    width: 100%; 
+    height: 100vh;
+}
+
+#tarjetaCarrusel-3 {
+    background: url('../img/carrusel3.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%; 
+    height: 100vh;
+}
+
+.flechasCarrusel {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    pointer-events: none;
+}
+
+.flechasCarrusel i {
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+#contePuntos {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+#contePuntos > a {
+    font-size: 1.4em;
+    font-style: normal;
+    margin: 0 5px;
+    cursor: pointer;
+    color: white;
+}
+
+#contePuntos > a:before {
+    content: "●";
 }
