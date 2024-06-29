@@ -14,12 +14,4 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title  # Representación legible del objeto en el admin y en las consultas
-    
-class Carrito(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
-    # Puedes añadir otros campos según sea necesario, como total, fecha, etc.
 
-class CarritoItem(models.Model):
-    carrito = models.ForeignKey(Carrito, related_name='items', on_delete=models.CASCADE)
-    post = models.ForeignKey('Post', on_delete=models.CASCADE)
-    cantidad = models.PositiveIntegerField(default=1)

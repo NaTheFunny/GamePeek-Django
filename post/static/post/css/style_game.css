@@ -1,0 +1,307 @@
+body {
+    background-image: url("../img/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    padding-top: 120px;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+#header{
+    background: rgb(0, 0, 0);
+    padding: 15px;
+    margin-left: auto; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+#header .container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+
+#header .nav-menu {
+    margin-left: auto; 
+}
+
+#header .nav-menu p{
+    font-size: 24px;
+    font-family: fantasy;
+    margin: 0;
+    padding-left: 24px;
+    color: white;
+}
+
+#header .nav-menu form{
+    font-size: large;
+    color: aliceblue;
+    padding-left: auto;
+    padding-top: auto;
+    line-height: 1;
+    padding-bottom: auto;
+    display: inline-block;
+    margin-left: 20px; 
+}
+
+#header .logo{
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#header .logo a{
+    color: rgb(255, 255, 255);
+}
+
+
+.cart-button {
+    width: 50px; 
+    height: 50px; 
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+.nav-menu ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-menu > ul{
+    display: flex;
+}
+
+.nav-menu > ul > li {
+    position: relative;
+    white-space: nowrap;
+    padding: 10px 0 10px 22px;
+}
+
+.nav-menu a{
+    display: block;
+    position: relative;
+    color: rgba(255, 255, 255, 0.7);
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    padding: 0 4px;
+    text-transform: uppercase;
+}
+
+body h1{
+    display: flex;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-container{
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px;
+    justify-content: center; 
+    padding: 20px;
+}
+
+.card{
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 300px;
+    margin: 10px;
+}
+
+.card img{
+    width: 100%;
+    height: auto;
+}
+
+.card h2{
+    margin: 16px;
+    font-size: 1.5rem;
+}
+
+.card p{
+    margin: 16px;
+    font-size: 1em;
+    color: #000000;
+}
+
+.card a{
+    display: block;
+    margin: 16px 16px 16px 0; 
+}
+
+body a{
+    display: flex;
+    justify-content: center;
+    margin-left: 5%;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.list-group-item img{
+    margin-top: 5px;
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover; 
+    border-radius: 5px; 
+    margin-right: 10px; 
+}
+
+.list-group-item span{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.container-registration{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.login-container {
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container form input[type="text"],
+.login-container form input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+.login-container form button[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.login-container form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.login-container p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-container p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container p a:hover {
+    text-decoration: underline;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+.container-register {
+    width: 700px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.container-register h2 {
+    text-align: center;
+}
+.container-register form {
+    display: flex;
+    flex-direction: column;
+}
+.container-register form input[type="text"],
+.container-register form input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+.container-register form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.container-register form button:hover {
+    background-color: #0056b3;
+}
+.container-register p {
+    text-align: center;
+    margin-top: 10px;
+}
+.container-register p a {
+    color: #007bff;
+    text-decoration: none;
+}
+.container-register p a:hover {
+    text-decoration: underline;
+}

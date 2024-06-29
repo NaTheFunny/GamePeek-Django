@@ -105,6 +105,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "index"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -122,10 +124,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "post" / "static" / "post"]
+STATICFILES_DIRS = [BASE_DIR / "post" / "static" / "post" ,
+                    BASE_DIR / "cart" / "static"]
 STATIC_ROOT = BASE_DIR /'staticfiles'
 MEDIA_URL =  '/archivos/'
 MEDIA_ROOT = BASE_DIR / 'archivos'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartModalElement = document.getElementById('cartModal');
     const cartModal = new bootstrap.Offcanvas(cartModalElement);
 
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
     // Función para agregar al carrito
-    function agregarAlCarrito(postId ,title, price, image) {
+    function agregarAlCarrito(postId ,title, price, image, url) {
         const cartItemsList = document.getElementById('cartItemsList');
         const existingItem = Array.from(cartItemsList.children).find(item => {
             return item.dataset.postId === postId.toString();

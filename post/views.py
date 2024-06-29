@@ -9,6 +9,7 @@ from django.contrib.auth import  login, authenticate
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from .decorators import admin_required
 
 # Create your views here.
 def index(request):
@@ -19,6 +20,9 @@ def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
+            user = form.save(commit=False)
+            user.is_staff = False  
+            user.save()
             form.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
@@ -42,7 +46,7 @@ def user_login(request):
     else:
         form = CustomAuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
-
+@admin_required
 def agregar(request):
     if request.method == "POST":
         form = FormularioJuego(request.POST,request.FILES)
@@ -52,7 +56,7 @@ def agregar(request):
     else:
         form = FormularioJuego()
     return render(request,'agregar.html',{'form': form})
-
+@admin_required
 def editar(request,pk):
     post = get_object_or_404(Post,pk=pk)
     if request.method == "POST":
@@ -63,10 +67,11 @@ def editar(request,pk):
     else:
         form = FormularioJuego(instance=post)
     return render(request,'editar.html',{'form': form})
-
+@admin_required
 def eliminar(request,pk):
     post = get_object_or_404(Post,pk=pk)
     if request.method == "POST":
         post.delete()
         return redirect('index')
     return render(request,'eliminar.html',{'post': post})
+
