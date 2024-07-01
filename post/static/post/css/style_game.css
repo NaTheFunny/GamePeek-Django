@@ -116,6 +116,7 @@ a:hover{
 }
 
 .card-container {
+    
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start center;
@@ -126,15 +127,17 @@ a:hover{
 }
 
 .card {
-    background-color: black; 
+    background-color: #552929f1; 
+    display: block;
+    text-decoration: none;
     width: 160px; 
     max-width: 200px; 
     height: 340px; 
     max-height: 500px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card:hover {
@@ -143,26 +146,26 @@ a:hover{
 
 .card img {
     width: 100%;
-    height: 50%; 
+    height: 100%; 
     object-fit: cover;
 }
 
 .card-content {
     padding: 15px;
     text-align: center;
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 50%;
 }
 
 .card-title {
-    font-size: 1.5em;
+    font-size: 1em;
     margin-bottom: 10px;
 }
 
 .card-price {
-    font-size: 1.2em;
+    font-size: 1.0em;
     color: #333;
     margin-bottom: 10px;
 }
@@ -443,4 +446,70 @@ body h1{
 
 #contePuntos > a:before {
     content: "●";
+}
+
+.conteiner-detalles {
+    width: 800px; 
+    height: auto; 
+    margin: 50px auto; 
+    padding: 20px;
+    background-color: #0f0e69; 
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row; 
+    gap: 20px;
+}
+
+.conteiner-detalles img {
+    width: 50%; 
+    height: auto; 
+    border-radius: 8px;
+    object-fit: cover; 
+}
+
+.conteiner-detalles-descripcion {
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start;
+    flex: 1; 
+}
+
+.conteiner-detalles h1 {
+    color: #ffffff;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.conteiner-detalles-descripcion .price {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.conteiner-detalles-descripcion .content {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #777;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-top: auto; 
+}
+
+.button-container .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.button-container .btn:hover {
+    background-color: #218838;
 }
